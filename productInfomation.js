@@ -1,3 +1,6 @@
+//Lay index trong ham getProductDetails de su dung cho phan danh gia
+var idx;
+
 //THAY DOI HINH ANH
 const mainImage = document.getElementById("mainImage");
 const thumbnails = document.querySelectorAll(".productThumbnail");
@@ -157,7 +160,7 @@ var ArrayListProducts = [];
       document.getElementById("lcd").textContent = product.lcd;
       document.getElementById("battery").textContent = product.batterycapacity;
       document.getElementById("weight").textContent = product.weight;
-
+     idx=index;
 
     }
 
@@ -186,7 +189,67 @@ function closeDropdownOutside(event) {
         document.removeEventListener('click', closeDropdownOutside);
     }
 }
+//DANH GIA SAO
+document.addEventListener('DOMContentLoaded', function () {
+    const starRating = document.querySelectorAll('.starRating');
+    const scoreInput = document.getElementById('dvscore');
 
+    starRating.forEach(star => {
+        star.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+
+            starRating.forEach(star => {
+                if (parseInt(star.getAttribute('data-value')) <= value) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+
+            scoreInput.value = value;
+        });
+    });
+});
+
+//GUI DANH GIA
+document.addEventListener('DOMContentLoaded', function() {
+    // Lắng nghe sự kiện submit của form
+    document.querySelector('#btnSubmitReview').addEventListener('click', function(event) {
+        event.preventDefault(); // Ngăn chặn việc gửi form đi (để xử lý dữ liệu)
+
+        var product = ArrayListProducts[idx];
+
+        // Lấy thông tin từ các trường input trong form
+        var id = product.id;
+        var productName = product.name;
+        var name = document.querySelector('input[name="name"]').value;
+        var email = document.querySelector('input[name="email"]').value;
+        var phone = document.querySelector('input[name="phone"]').value;
+        var score = document.querySelector('input[name="score"]').value;
+        var url = document.querySelector('input[name="url"]').value;
+        var body = document.querySelector('textarea[name="body"]').value;
+        var filedata = document.querySelector('input[name="filedata"]').value;
+
+        // Tạo object chứa thông tin đánh giá
+        var reviewData = {
+            id: id,
+            productName: productName,
+            name: name,
+            email: email,
+            phone: phone,
+            score: score,
+            url: url,
+            body: body,
+            filedata: filedata
+        };
+
+        // Lưu thông tin đánh giá vào local storage
+        localStorage.setItem('reviewData', JSON.stringify(reviewData));
+
+        // Hiển thị thông báo hoặc thực hiện các hành động khác sau khi lưu thành công
+        alert('Đánh giá của bạn đã được gửi đi.');
+    });
+});
       
 
 
