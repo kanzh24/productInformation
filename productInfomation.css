@@ -410,13 +410,22 @@ textarea{
     width: 500px;
     padding: 10px;
 }
-.starRating{
-    width: 20px;
-    height: 20px;
-    margin: 1px;
+.starRating {
     display: inline-block;
-    background-image: url(//theme.hstatic.net/1000271639/1000347388/14/star1.png?v=995);
-    background-size: cover;
+    font-size: 0;
+}
+
+.starRating::before {
+    content: "\2605"; 
+    font-size: 24px; 
+    color: #ccc; 
+    cursor: pointer;
+}
+
+/* Khi ngôi sao được chọn */
+.starRating.selected::before,
+.starRating:hover::before {
+    color: orange; /* Màu sắc khi chọn hoặc hover */
 }
 .productPageFooter{
     margin-top: 30px;
