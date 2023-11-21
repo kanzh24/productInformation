@@ -1,0 +1,63 @@
+.bottom_header {
+    background-color: white; 
+    height: 45px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 5px 2px #00000026;
+}
+
+.menu_bottomheader{
+    width: 20.2%;
+    height: 45px;
+    margin-left: 98px;
+    background-color: rgb(63, 63, 255);
+    list-style: none;
+}
+
+.menu_bottomheader p{
+    margin-top: -28px;
+    margin-left: 65px;
+}
+
+.right_bottom_header{
+    width: 69%;
+    height: 45px;
+    display: flex;
+  
+}
+ 
+.right_bottom_header li{
+    margin-left: 92px;
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.bottom_header_transition{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.bottom_header_transition p:hover{
+    color: red;
+}
+#danhmuc img{
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+/* Quy tắc chung cho các phần tử */
+[id="baohanh"],
+[id="khuyenmai"],
+[id="tragop"],
+[id="tin"] {
+    position: absolute;
+    margin-left: -35px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+[id="tin"] {
+    margin: 75px 0 0 1085px;
+
+}
+

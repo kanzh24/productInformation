@@ -1,0 +1,109 @@
+.top_header {
+    background-color: #1877f2;
+    color: #fff;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.logo-header{
+    width: 10%;
+    margin-left: 45px;
+    margin-right: 50px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+/* CSS cho ô tìm kiếm trong header */
+.search-desktop {
+    width: 25%;
+    margin-left: 150px; /* Điều chỉnh khoảng cách từ lề trái */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative; /* Để có thể định vị nút tìm kiếm */
+    box-sizing: border-box;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative; /* Để có thể định vị nút tìm kiếm */
+}
+
+.search-input {
+    width: 350px; 
+    height: 23px;
+    border: 1px solid #ccc; /* Để viền ô tìm kiếm */
+    border-radius: 5px;
+    padding: 10px; /* Điều chỉnh khoảng cách bên trong ô tìm kiếm */
+    color: #333; /* Màu văn bản trong ô tìm kiếm */
+}
+
+.btn-search {
+    background-color: #1877f2; /* Màu nền nút tìm kiếm */
+    border-radius: 5px;
+    width: 20%;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 5px; /* Đặt vị trí từ mép phải */
+}
+
+.menu_header{
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: -25px;
+}
+.list-menu-header {
+    list-style: none; /* Ẩn dấu chấm trước danh sách */
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+li .box-icon-topmenu{
+    margin-right: 10px;
+}
+
+#color-icon img{
+    filter: brightness(0) invert(1);
+   -webkit-filter: brightness(0) invert(1);
+}
+
+.menu_header ul li {
+    margin: 0 20px; /* Khoảng cách giữa các mục menu */
+}
+
+.menu_header ul li a {
+    text-decoration: none;
+    color: #fff; /*     Màu chữ cho các liên kết trong menu */
+    display: block; /* Hiển thị liên kết dưới dạng block để có thể sử dụng padding và margin */
+}
+
+.btn-login {
+    background-color: #ff6600; /* Màu nền nút Đăng Nhập */
+    color: #fff; /* Màu chữ trên nút Đăng Nhập */
+    padding: 5px 10px; /* Khoảng cách bên trong nút */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.menu_header .box-text{
+    display: flex;
+    flex-direction: column;
+}
+.icon_call{
+    margin: 10px;
+}
+header {
+    font-family: "Mulish",sans-serif!important;
+}

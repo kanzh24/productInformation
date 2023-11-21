@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+</head>
+<body>
+  <h1>Product Details</h1>
+  
+  <div id="list">
+    <!-- Dynamically generated product details will be displayed here -->
+  </div>
+
+  <script>
+   var ArrayListProducts = [
+{
+    id:"0001",
+    hang:"Asus",
+    img1: "./sp1/anh1.png",
+    img2: "./sp1/anh2.png",
+    img3: "./sp1/anh3.png",
+    name: "Laptop ASUS VivoBook 14 OLED A1405VA-KM095W (I5-13500H | 16GB | 512GB | Intel Iris Xe Graphics | 14' 2.8K OLED 100% DCI-P3 | Win 11)",
+    cpu: "Intel Core i5-13500H 2.6GHz up to 4.7GHz 18MB",
+    ram: "16GB (8GB Onboard + 8GB) DDR4 3200MHz (1x SO-DIMM socket, up to 16GB SDRAM)",
+    gpu: "Intel® Iris Xe Graphics",
+    ssd: "512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, nâng cấp thay thế)",
+    lcd: "14 2.8K (2880 x 1800) OLED 16:10 aspect ratio, 90Hz/0.2ms response time, 600nits",
+    price: "17,990,000",
+    weight: "1.88Kg",
+    batterycapacity:"50 WHrs, 3S1P, 3-cell Li-ion",
+},
+{
+    id:"0002",
+    hang:"Asus",
+    img1: "./sp2/anh1.png",
+    img2: "./sp2/anh2.png",
+    img3: "./sp2/anh3.png",
+    name: "Laptop ASUS VivoBook 14 OLED M1405YA-KM047W (R5-7530U | 8GB | 512GB | AMD Radeon™ Graphics | 14' 2.8K OLED | Win 11)",
+    cpu: "AMD Ryzen 5-7530U 2.0GHz up to 4.5GHz 16MB",
+    ram: "8GB Onboard DDR4 3200MHz (1x SO-DIMM socket, up to 16GB SDRAM)",
+    gpu: "AMD Radeon™ Graphics",
+    ssd: "512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, support M.2 2280 PCIe 3.0x4)",
+    lcd: "14 2.8K (2880 x 1800) OLED 16:10 aspect ratio, 90Hz/0.2ms response time, 600nits",
+    price: "17,990,000",
+    weight: "1.6Kg",
+    batterycapacity:"50 WHrs, 3S1P, 3-cell Li-ion",
+},
+{
+    id:"0003",
+    hang:"Asus",
+    name: "Laptop ASUS VivoBook 15 OLED A1505VA-L1113W (I5-13500H | 16GB | 512GB | Intel Iris Xe Graphics | 15.6' FHD OLED | Win 11)",
+    img1: "./sp3/anh1.png",
+    img2: "./sp3/anh2.png",
+    img3: "./sp3/anh3.png",
+    cpu: "Intel Core i5-13500H 2.6GHz up to 4.7GHz 18MB",
+    ram: "16GB (8GB Onboard + 8GB) DDR4 3200MHz (1x SO-DIMM socket, up to 16GB SDRAM)",
+    gpu: "	Intel® Iris Xe Graphics",
+    ssd: "512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, nâng cấp thay thế)",
+    lcd: "15.6 FHD (1920 x 1080) OLED 16:9 aspect ratio, 0.2ms response time, 600nits",
+    price: "17,990,000",
+    weight: "1.88Kg",
+    batterycapacity:"50 WHrs, 3S1P, 3-cell Li-ion",
+}
+];
+ var ArrayListProducts = [
+    {
+        id:"0001",
+        hang:"Asus",
+        img1: "./sp1/anh1.png",
+        img2: "./sp1/anh2.png",
+        img3: "./sp1/anh3.png",
+        name: "Laptop ASUS VivoBook 14 OLED A1405VA-KM095W (I5-13500H | 16GB | 512GB | Intel Iris Xe Graphics | 14' 2.8K OLED 100% DCI-P3 | Win 11)",
+        cpu: "Intel Core i5-13500H 2.6GHz up to 4.7GHz 18MB",
+        ram: "16GB (8GB Onboard + 8GB) DDR4 3200MHz (1x SO-DIMM socket, up to 16GB SDRAM)",
+        gpu: "Intel® Iris Xe Graphics",
+        ssd: "512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, nâng cấp thay thế)",
+        lcd: "14 2.8K (2880 x 1800) OLED 16:10 aspect ratio, 90Hz/0.2ms response time, 600nits",
+        price: "17,990,000",
+        weight: "1.88Kg",
+        batterycapacity:"50 WHrs, 3S1P, 3-cell Li-ion",
+    },
+    {
+        id:"0002",
+        hang:"Asus",
+        img1: "./sp2/anh1.png",
+        img2: "./sp2/anh2.png",
+        img3: "./sp2/anh3.png",
+        name: "Laptop ASUS VivoBook 14 OLED M1405YA-KM047W (R5-7530U | 8GB | 512GB | AMD Radeon™ Graphics | 14' 2.8K OLED | Win 11)",
+        cpu: "AMD Ryzen 5-7530U 2.0GHz up to 4.5GHz 16MB",
+        ram: "8GB Onboard DDR4 3200MHz (1x SO-DIMM socket, up to 16GB SDRAM)",
+        gpu: "AMD Radeon™ Graphics",
+        ssd: "512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, support M.2 2280 PCIe 3.0x4)",
+        lcd: "14 2.8K (2880 x 1800) OLED 16:10 aspect ratio, 90Hz/0.2ms response time, 600nits",
+        price: "17,990,000",
+        weight: "1.6Kg",
+        batterycapacity:"50 WHrs, 3S1P, 3-cell Li-ion",
+    },
+    {
+        id:"0003",
+        hang:"Asus",
+        name: "Laptop ASUS VivoBook 15 OLED A1505VA-L1113W (I5-13500H | 16GB | 512GB | Intel Iris Xe Graphics | 15.6' FHD OLED | Win 11)",
+        img1: "./sp3/anh1.png",
+        img2: "./sp3/anh2.png",
+        img3: "./sp3/anh3.png",
+        cpu: "Intel Core i5-13500H 2.6GHz up to 4.7GHz 18MB",
+        ram: "16GB (8GB Onboard + 8GB) DDR4 3200MHz (1x SO-DIMM socket, up to 16GB SDRAM)",
+        gpu: "	Intel® Iris Xe Graphics",
+        ssd: "512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, nâng cấp thay thế)",
+        lcd: "15.6 FHD (1920 x 1080) OLED 16:9 aspect ratio, 0.2ms response time, 600nits",
+        price: "17,990,000",
+        weight: "1.88Kg",
+        batterycapacity:"50 WHrs, 3S1P, 3-cell Li-ion",
+    }
+];
+
+    function getProductDetails(index) {
+      var product = ArrayListProducts[index];
+      var productDetails = `
+        <div>
+          <span itemprop="name" id="name">${product.name}</span>
+        </div>
+
+        <div class="Image">
+          <img id="mainImage" class="ProductImage" src="${product.img1}">
+        </div>
+
+        <!-- Other product details... -->
+
+        <div class="priceProduct">
+          <span class="price-now">${product.price}₫</span>                                               
+        </div>
+
+        <div class="specificationsTable">
+          <table>
+            <tbody>
+              <!-- Product specifications -->
+              <!-- Ensure the correct formatting of the table -->
+            </tbody>
+          </table>
+        </div>`;
+
+      document.getElementById("list").innerHTML = productDetails;
+    }
+
+    // Lấy index từ query string (?index=) của URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var selectedIndex = urlParams.get('index');
+
+    if (selectedIndex !== null) {
+      getProductDetails(selectedIndex);
+    }
+  </script>
+</body>
+</html>

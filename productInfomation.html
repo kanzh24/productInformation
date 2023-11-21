@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="productInfomation.css">
+    <link rel="stylesheet" href="topheader.css">
+    <link rel="stylesheet" href="bottomheader.css">
+    <link rel="stylesheet" href="cart_header.css">   
+    <link rel="stylesheet" href="dangnhap_header.css"> 
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js" ></script>
+    <script src="lazyload-cus.js"></script>
+    <link rel="stylesheet" href="productInfomation.js">
+
+</head>
+<body>
+    <div class="showInfomation" id="list">
+        <div class="header">
+            <header>
+                <div class="top_header">
+                    <div class="logo-header">
+                        <a href="#">
+                            <img width="240" height="80" src="./image/logo-removebg-preview.png" alt="logo">
+                        </a>
+                    </div>
+                    <div class="search-desktop">
+                        <form action="/search" class="search">
+                            <div class="search-inner">
+                                <input class="search-input" type="text" placeholder="Bạn đang tìm gì..." aria-label="Search">
+                            </div>
+                            <button type="submit" class="btn-search" aria-label="Tìm kiếm">
+                                <img width="30" height="30" src="./image/icon-search.png" alt="Tìm kiếm">
+                            </button>
+                        </form>
+                    </div>
+                    <div class="menu_header">
+                            <ul class="list-menu-header">
+                                <li class="list-menu-header-item">
+                                    <a class="icon_call" href="tel:0353022840" style="display: flex; align-items: center;">
+                                        <span class="box-icon-topmenu" id="color-icon">								
+                                            <img width="24" height="24" src="https://file.hstatic.net/200000713019/file/phone-call_e079526c31434e4bb169132325cc2600.png" alt="Hotline">
+                                        </span>
+                                        <span class="box-text">
+                                            Hotline
+                                            <span class="small-text">0353022840</span>
+                                        </span>        
+                                    </a>
+                                </li>
+                                <li class="list-menu-header-item">
+                                    <a class="icon_ggmap" href="https://maps.app.goo.gl/s9gDSUJW9wrHKShE8" target="_blank" style="display: flex; align-items: center;">
+                                        <span class="box-icon-topmenu" id="color-icon">								
+                                            <img width="24" height="24" src="./image/map.png" alt="Hệ thống">
+                                        </span>
+                                        <span class="box-text">
+                                            Hệ thống
+                                        <span class="small-text">Showroom</span>
+                                        </span>        
+                                    </a>
+                                </li>
+                                <li class="list-menu-header-item" id="menuHeaderItem">
+                                    <button class="cartButton" onclick="toggleDropdown()">
+										<span class="cartIcon">								
+											<img style="max-width: 100%; vertical-align: middle;" width="24" height="24" src="//theme.hstatic.net/1000374492/1001112536/14/shopping-cart.svg?v=126" alt="Hệ thống cửa hàng">
+											<span class="cartNumber">0</span>
+										</span>
+										<span class="cartTittle">
+											Giỏ hàng
+										</span>		
+										<span class="CartBox">
+											<svg viewBox="0 0 20 9" role="presentation">
+												<path d="M.47108938 9c.2694 725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+											</svg>
+										</span>
+									</button> 
+
+                                    
+                                    <div class="header-action_dropdown" id="dropdownContent" style="display: none;">
+                                        <div class="header-dropdown_content">
+                                            <div class="overflow-hidden relative-position">
+                                                <div class="account_header text-center">
+                                                    <div class="account_title ">Giỏ hàng</div>
+                                                </div>
+                                                <div class="cart-content" id="cart-mini-wanda">
+                                                    <div class="cart-view clearfix">
+                                                        <div class="cart-scroll">
+                                                            <table id="cart-view">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <tr>
+                                                                            <td colspan="3" class="text-center"></td>
+                                                                        </tr>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>    
+                                                           
+                                                        </div>
+                                                        
+                                                        <span class="line"></span>
+                                                        <table class="table-total">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="title-total" >TỔNG TIỀN:</td>
+                                                                    <td class="text-right" id="total-view-cart" >0₫</td>
+                                                                </tr>
+                                                               <tr>
+                                                                    <td>
+                                                                        <a href="/cart" class="wanda-cart-url btn" style="color:black;">Xem giỏ hàng</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="/checkout" class="wanda-checkout-url btn" style="color: black;">Thanh toán</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                             
+                                </li>   
+                                <li class="list-menu-header-item">
+                                
+                                </li>
+                                <div class="form-cart-container" id="test">
+                                    <div class="login-popup-cart" id="login-popup-cart">
+                                    </div>
+                                    <div class="login-content-cart" id="login-content-cart">
+                                        <div class="formcart">
+                                            <!-- Nội dung của cửa sổ đăng nhập ở đây -->
+                                            <!-- Bạn có thể thêm các trường nhập, nút Đăng nhập, và nội dung khác -->
+                                            <div class="giohang">
+                                                <h2>GIỎ HÀNG</h2>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <li class="list-menu-header-item">
+                                    <button type="submit" class="btn-login" id="button-login" style="width: 95px;">
+                                        <span class="box-text" id="color-icon">
+                                            Đăng nhập
+                                        <span class="small-text">Đăng ký</span>
+                                        </span> 
+                                    </button>
+                                </li>
+                                <div>
+                                    <div class="login-popup" id="login-popup">
+                                    </div>
+                                    <div class="login-content" id="login-content">
+                                        <div class="formdangnhap">
+                                            <!-- Nội dung của cửa sổ đăng nhập ở đây -->
+                                            <!-- Bạn có thể thêm các trường nhập, nút Đăng nhập, và nội dung khác -->
+                                            <div class="dangnhaptxt">
+                                                <h2>ĐĂNG NHẬP TÀI KHOẢN</h2>
+                                                <p>Nhập email và mật khẩu của bạn:</p>
+                                            </div>
+                                            <div>
+                                                <form id="customer_login">
+                                                    <div class="form-control">
+                                                        <input type="email" placeholder="Email" name="customer[email]">
+                                                    </div>
+                                                    <div class="form-control" bis_skin_checked="1">
+                                                        <input type="password" placeholder="Mật khẩu" name="customer[password]">
+                                                    </div>
+                                                    <div class="form-control" bis_skin_checked="1">
+    <button type="submit" class="btn-submit" id="form_submit-login">Đăng nhập</button>
+                                                    </div>
+                                                    </form>
+                                                <div class="account-actions">
+                                                    <p>  
+                                                        Khách hàng mới?
+                                                        <a href="./login.html">Tạo tài khoản</a>
+                                                    </p>
+                                                    <p>
+                                                        Quên mật khẩu?
+                                                        <a href="#">
+                                                            Khôi phục mật khẩu
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                    </div>
+                </div>
+                <div class="bottom_header">
+                    <div class="container">
+                        <div class="menu_bottomheader">
+                            <span class="box-icon" id="danhmuc">     
+                                <img width="30" height="30" src="./image/danhmuc.png" alt="Danh mục">                        
+                            </span>
+                            <p>DANH MỤC SẢN PHẨM</p>
+                        </div>
+                        <div class="right_bottom_header">
+                            <ul class="bottom_header_transition">
+                                <li>
+                                    <span class="box-icon">
+                                        <i id="baohanh" class="fa-regular fa-handshake" style="color: #202124;"></i>
+                                    </span>
+                                    <p id="menuright_bottom" class="box-text">Chính sách bảo hành</p>
+                                </li>
+                                <li>
+                                    <span class="box-icon">
+                                        <i id="khuyenmai" class="fa-solid fa-money-check-dollar" style="color: #202124;"></i>
+                                    </span>
+                                    <p id="menuright_bottom" class="box-text">Khuyến mãi</p>
+                                </li>
+                                <li>
+                                    <span class="box-icon">
+                                        <i id="tragop" class="fa-solid fa-hand-holding-dollar" style="color: #202124;"></i>
+                                    </span>
+                                    <p id="menuright_bottom" class="box-text">Trả góp</p>
+                                </li>
+                                <li>
+                                    <span class="box-icon">
+    <i id="tin" class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                    </span>
+                                    <p id="menuright_bottom" class="box-text">Tin công nghệ</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="main">
+            <!--Link den san pham -->
+            <div class="breadcrumb">
+                
+                    <ol class="breadcrumb-arrow">
+                        <li itemprop="itemList">
+                            <a>
+                                <span itemprop="name">
+                                    Trang chu         
+                                </span> 
+                            </a>
+                        </li>
+                        <li itemprop="itemList">
+                            <a>
+                                <span itemprop="name">
+                                    Hang hoa
+                                </span>
+                            </a>
+                            <li class="active" itemprop="itemListElement">
+                                <div>
+                                    <span itemprop="name" id="name"></span>
+                                </div>
+                                    
+                                
+                            </li>
+
+                    </ol>
+    
+            </div>
+            <section id="productTemplate" class="productPage">
+                <div class="productPagecontainer">
+                        <div class="productPageTop" >
+                            <div class="productPageTopLeft">
+                                    
+                                    <div class="productPageTopLeft-Image">
+                                        <div class="Image" >
+                                            <img id="mainImage" class="ProductImage" src="">
+                                        </div>
+                                        
+                                        <div class="ImageList">
+                                        
+                                                    <img class="productThumbnail" src="" id="ImageList1">
+                                                    <img class="productThumbnail" src="" id="ImageList2">
+                                                    <img class="productThumbnail" src="" id="ImageList3">
+                                                
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="productPageTopLeft-Info">
+                                            <div class="productTittle">
+                                                <h1 data-available="Còn hàng" class="green" id="tittle"></h1>
+                            
+                                            </div>
+                                            <div class="trademarkProduct">
+                                                    <div class="pro-brand"><span>Thương hiệu: </span><a class="title" id="trademark" href="/collections/vendors?q=hp"></a></div>
+                                                    <span class="line-info">|</span><div class="pro-type"><span>Loại: </span><a class="title" rel="nofollow" href="/collections/types?q=laptop">Laptop</a></div>
+                                            </div>
+                                            <div class="priceProduct">
+                                                    <span class="price-now" id="price"></span>
+                                                 
+                                            </div>
+                                            <div class="quantityProduct">
+                                                <div class="quantity-area">
+                                                    <input type="button" value="–" onclick="decrementQuantity()" class="quantityBtn">
+                                                    <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantityText">
+                                                    <input type="button" value="+" onclick="incrementQuantity()"class="quantityBtn">
+                                                </div>
+                                            </div>
+                                            <div class="addToCart"> 			
+                                                    <button type="button" id="addToCartBtn" class="addToCartBtn" name="add" onclick="addToCart()"> 
+                                                        <strong style="text-transform: uppercase;" >Thêm vào giỏ</strong>
+                                                        <br>
+                                                        <span style="font-size: 13px;">Giao Tận Nơi Hoặc Nhận Tại Cửa Hàng</span>
+                                                    </button>
+                                            </div>
+                                            <div class="buyNow">  
+                                                <button type="button" id="buyNowBtn" class="buyNowBtn" name="add"> 
+                                                    <strong style="text-transform: uppercase;">Mua luôn</strong>
+                                                    <br>
+                                                    <span style="font-size: 13px;">Giao Tận Nơi Hoặc Nhận Tại Cửa Hàng</span>
+                                                </button>
+                                        </div>
+                                            </div>
+                                    </div>
+    
+                    
+                            <div class="productPageTopRight">
+                                    <div class="salesPledge">
+                                        <div class="salesPledgeTittle"> Cam kết bán hàng</div>
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <img width="25" height="25" src="https://file.hstatic.net/200000713019/file/policy_header_image_2_cb4464b7e9af47fb83942bf7e20548ec.png" >   
+                                                    <span>Hàng chính hãng. Nguồn gốc rõ ràng</span>
+                                                </li>
+                                                <li>
+                                                    <img width="25" height="25" src="https://file.hstatic.net/200000713019/file/policy_header_image_3_4d4c94de9c514e37ae4414e4de773c06.png">
+                                                    <span>Tặng máy nếu phát hiện máy sửa chữa</span>
+                                                </li>
+                                                <li>
+                                                    <img width="25" height="25" src="https://file.hstatic.net/200000713019/file/shipped_10ad7e72d69a4ab592eed20122801f83.png">
+                                                    <span>Giao hàng ngay (nội thành TPHCM)</span>
+
+                                                </li>
+                                                <li>
+                                                    <img width="25" height="25" src="https://file.hstatic.net/200000713019/file/instruction_8ea7e6a2f6804d51b724e50d2c97f33b.png">
+                                                    <span>Bao test 1 đổi 1 trong 15 ngày</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                            </div>
+                          </div>
+                    
+                        <div class="productPageCenter">
+                            <div class="productPageCenterLeft">
+                                    <div class="productDescription">
+                                        <div class="productDescriptionTittle">MÔ TẢ SẢN PHẨM</div>
+                                        <div class="productMoreDescription">
+                                            <table>
+                                                <ul >
+                                                    <li><span style="font-size: 20px;" >Bảo hành 12 tháng  .</span></li>
+                                                    <li><span style="font-size: 20px;">Đổi trả sản phẩm miễn phí trong 15 ngày.</span></li>
+                                                    <li><span style="font-size: 20px;">Hỗ trợ cài đặt phần mềm span></li>
+                                                    <li><span style="font-size: 20px;">Vệ sinh miễn phí trọn đời máy.</span></li>
+                                                    <li><span style="font-size: 20px;">Bộ quà tặng (Chuột + lót chuột) </span></li>
+                                                </ul>
+                                            </table>
+                                        
+                                        </div>
+                                    </div>
+    
+                            </div>
+                            <div class="productPageCenterRight">
+                                   <div class="specificationsTittle"><span style="font-size: 20px;">THÔNG SỐ KỸ THUẬT</span></div>
+                                   <div class="specificationsTable">
+                                    <Table>
+                                        <tbody>
+                
+                                            <tr>
+                                                <th>CPU</th>
+                                                <td id="cpu"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;RAM</th>
+                                                <td id="ram"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;GPU</th>
+                                                <td id="gpu"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;SSD</th>
+                                                <td id="ssd"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>LCD</th>
+                                                <td><a id="lcd"></a></td>
+                                            </tr>
+                                           
+                                          
+                                            <tr></tr>
+                                                <th>&nbsp;Pin</th>
+                                                <td id="battery"></td>
+                                            </tr>
+                                         
+                                            <tr>
+                                                <th>Trọng Lượng&nbsp;</th>
+                                                <td id="weight"></td>
+                                            </tr>
+                                          
+                                        
+                                        
+                                        </tbody>
+                                    </Table>
+                                   </div>
+                                   
+                            </div>
+    
+                        </div>
+                        <div class="productPageBottom">
+                            <div class="productForm">
+							
+                                <h3>Viết đánh giá</h3>
+                                
+                                <form>
+    
+                                    <input name="id" type="hidden" value="1050780976">
+                                    <input name="productname" type="hidden" >
+    
+                                    <div class="flex">
+                                        <fieldset>
+                                            <div id="dvName">
+                                                <input name="name" required="" type="text" placeholder="Tên của bạn (>3 ký tự và < 20 ký tự)" autocomplete="off">
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <div id="dvEmail">
+                                                <input name="email" type="email" placeholder="xinchao@gmail.com" autocomplete="off">
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    
+                                    <div>
+    
+                                        <fieldset>
+                                            <div id="dvEmail">
+                                                <input name="phone" type="number" placeholder="Số điện thoại" autocomplete="off">
+                                            </div>
+                                        </fieldset>
+    
+                                    </div>
+                                    <fieldset id="productFormRate"><label>Đánh giá</label>
+                                        <div id="dvRating">
+                                            <i data-value="1" class="starRating"></i>  
+                                            <i data-value="2" class="starRating"></i>
+                                            <i data-value="3" class="starRating"></i>
+                                            <i data-value="4" class="starRating"></i>
+                                            <i data-value="5" class="starRating"></i>
+                                            <input id="dvscore" name="score" type="hidden" value="5">
+                                            <input id="url" name="url" type="hidden" value="productInfomation.html">
+                                        </div>
+                                    </fieldset>
+                                    
+                                    <fieldset>
+                                        <div id="dvBody">
+                                            <textarea name="body" required="" rows="5" minlength="3" maxlength="1000" placeholder="Viết nội dung đánh giá ở đây (>3 ký tự và < 1000 ký tự)"></textarea>
+                                        </div>
+                                    </fieldset>
+                                    
+                                    <div class="flex">
+                                        <fieldset>
+                                            <div id="dvimg">
+                                                <input name="filedata" id="uploadfile" type="file">
+                                            </div>
+                                        </fieldset>
+                
+                                    </div>
+                                    
+                                    <input type="submit" style="background:black; width: 120px; color: white;" id="btnSubmitReview" value="Gửi đánh giá" >
+                                </form><br> 
+                            </div>  
+                        </div>
+                        <div class="productPageFooter">
+                            <div class="relatedTittle">
+                                <h2 class="title-section">
+                                    <span>Sản phẩm liên quan</span>
+                                    
+                                </h2>
+                            </div>
+                                <div class="relatedProductsDv">
+                                    <div class="relatedProduct" >
+                                        <div class="item">
+                                            <div class="imgvp1"></div>
+                                        <div class="content">
+                                            <div class="title">Asus Vivobook X413JA-211VBWB I3-1005G1 4GB 128GB SSD 14 FHD W10</div>
+                                            <div class="des">
+                                                <div>CPU Intel Core i3 1005G1</div>
+                                                <div>RAM 4G DDR4 2666Hz</div>
+                                                <div>SSD 128GB PCIe NVMe</div>
+                                                <div>VGA Intel® UHD Graphics</div>
+                                            </div>
+                                            <div class="relatedProductPrice">7,900,000₫</div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="relatedProduct" >
+                                        <div class="item">
+                                            <div class="imgvp1"></div>
+                                        <div class="content">
+                                            <div class="title">Asus Vivobook X413JA-211VBWB I3-1005G1 4GB 128GB SSD 14 FHD W10</div>
+                                            <div class="des">
+                                                <div>CPU Intel Core i3 1005G1</div>
+                                                <div>RAM 4G DDR4 2666Hz</div>
+                                                <div>SSD 128GB PCIe NVMe</div>
+                                                <div>VGA Intel® UHD Graphics</div>
+                                            </div>
+                                            <div class="relatedProductPrice">7,900,000₫</div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="relatedProduct" >
+                                        <div class="item">
+                                            <div class="imgvp1"></div>
+                                        <div class="content">
+                                            <div class="title">Asus Vivobook X413JA-211VBWB I3-1005G1 4GB 128GB SSD 14 FHD W10</div>
+                                            <div class="des">
+                                                <div>CPU Intel Core i3 1005G1</div>
+                                                <div>RAM 4G DDR4 2666Hz</div>
+                                                <div>SSD 128GB PCIe NVMe</div>
+                                                <div>VGA Intel® UHD Graphics</div>
+                                            </div>
+                                            <div class="relatedProductPrice">7,900,000₫</div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="relatedProduct" >
+                                        <div class="item">
+                                            <div class="imgvp1"></div>
+                                        <div class="content">
+                                            <div class="title">Asus Vivobook X413JA-211VBWB I3-1005G1 4GB 128GB SSD 14 FHD W10</div>
+                                            <div class="des">
+                                                <div>CPU Intel Core i3 1005G1</div>
+                                                <div>RAM 4G DDR4 2666Hz</div>
+                                                <div>SSD 128GB PCIe NVMe</div>
+                                                <div>VGA Intel® UHD Graphics</div>
+                                            </div>
+                                            <div class="relatedProductPrice">7,900,000₫</div>
+                                        </div>
+                                        </div>
+                                    </div>  
+                                 
+
+                                </div>
+                            
+                        
+                           
+        </div>
+        </div>
+        </section>
+        <div class="footer">
+            <div style="width: 100%;height: 350px;background-color:rgb(29, 27, 27);">
+                <div class="dk">
+                    <div style="font-size: 18px;line-height: 55px;color:white;float: left;">ĐĂNG KÍ NHẬN TIN</div>
+                    <div><input type="Email" placeholder="Email" style="line-height: 35px;margin-top: 8px;margin-left: 110px;" size="35px;"></div>
+                    <div class="dky">ĐĂNG KÝ</div>
+                </div>
+                <div style="width: 80%;transform: translateX(12.5%);justify-content: center;display: flex;">
+                    <div class="thongtin">
+                        <div>8Lap</div>
+                        <div>8Lap cung cấp laptop cao cấp</div>
+                        <div>273 Đ.An Dương Vương, Phường 3, Quận 5, Thành phố Hồ Chí Minh</div>
+                        <div>0123456789</div>
+                        <div>8Lap@gmail.com</div>
+                        <div><img src="./css/anh/maytinh/FOOTER/dathongbao_48067cd02fae41b68bf0294777c39c94_compact.png"></div>
+                    </div>
+                    <div class="thongtin">
+                        <div>CHÍNH SÁCH</div>
+                        <li>Giới thiệu</li>
+                        <li>Chính sách đổi trả</li>
+                        <li>Chính sách bảo mật</li>
+                        <li>Chính sách giao hàng</li>
+                        <li>Chính sách bảo hành</li>
+                        <li>Điều khoản dịch vụ</li>
+                        <li>Thanh toán</li>
+                    </div>
+                    <div class="thongtin">
+                        <div>HƯỚNG DẪN</div>
+                        <li>Sản phẩm khuyến mãi</li>
+                        <li>Sản phẩm nổi bật</li>
+                        <li>Tất cả sản phẩm</li>
+                    </div>
+                    <div class="thongtin">
+                        <div>TỔNG ĐÀI HỖ TRỢ</div>
+                        <div>Gọi mua hàng: 0123456789(8h30-21h)</div>
+                        <div>Gọi bảo hành: 0123456789(8h30-21h)</div>
+                        <div>Gọi khiếu nại: 0123456789(8h30-21h)</div>
+                        <div>PHƯƠNG THỨC THANH TOÁN</div>
+                        <div><img src="./css/anh/maytinh/FOOTER/footer_trustbadge.webp"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script src="productInfomation.js" >
+
+
+    
+</script>
+</html>
