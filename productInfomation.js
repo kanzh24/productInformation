@@ -10,6 +10,7 @@ thumbnails.forEach(thumbnail => {
         mainImage.src = thumbnail.src;
     });
 });
+/*---------------------------------------------------------------------------------------*/
 //TANG GIAM SO LUONG 
 
 function decrementQuantity() {
@@ -27,7 +28,7 @@ function decrementQuantity() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "productData.json", true);
     }
-    
+/*---------------------------------------------------------------------------------------*/    
       
 
 //THEM SP VAO GIO HANG
@@ -128,7 +129,7 @@ return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).fo
 
 
 });
-
+/*---------------------------------------------------------------------------------------*/
 
 //THAY DOI SAN PHAM
 
@@ -161,13 +162,24 @@ var ArrayListProducts = [];
       document.getElementById("battery").textContent = product.batterycapacity;
       document.getElementById("weight").textContent = product.weight;
      idx=index;
-
     }
 
-    if (selectedProductIndex !== null) {
-      getProductDetails(selectedProductIndex);
-    }
-
+    function getProductDetailsFromURL() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const productId = urlParams.get('id');
+      
+        if (productId) {
+          const index = ArrayListProducts.findIndex(product => product.id === productId);
+          if (index !== -1) {
+            getProductDetails(index);
+          }
+        }
+      }
+      
+      // Gọi hàm khi trang được load
+      getProductDetailsFromURL();
+/*---------------------------------------------------------------------------------------*/
 //HIEN GIO HANG
 function toggleDropdown() {
     var dropdown = document.getElementById("dropdownContent");
@@ -189,6 +201,7 @@ function closeDropdownOutside(event) {
         document.removeEventListener('click', closeDropdownOutside);
     }
 }
+/*---------------------------------------------------------------------------------------*/
 //DANH GIA SAO
 document.addEventListener('DOMContentLoaded', function () {
     const starRating = document.querySelectorAll('.starRating');
@@ -210,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
+/*---------------------------------------------------------------------------------------*/
 //GUI DANH GIA
 document.addEventListener('DOMContentLoaded', function() {
     // Lắng nghe sự kiện submit của form
@@ -250,9 +263,90 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Đánh giá của bạn đã được gửi đi.');
     });
 });
-      
+/*---------------------------------------------------------------------------------------*/    
+//LAY SAN PHAM LIEN QUAN
 
+    // Lấy ra các sản phẩm cùng hãng và ngẫu nhiên 4 sản phẩm từ danh sách
+    function getRandomProductsByBrand(products, brand) {
+        const filteredProducts = products.filter(product => product.hang === brand);
+        const randomProducts = [];
 
+        while (randomProducts.length < 4 && randomProducts.length < filteredProducts.length) {
+            const randomIndex = Math.floor(Math.random() * filteredProducts.length);
+            const randomProduct = filteredProducts[randomIndex];
 
-  
+            // Đảm bảo không thêm sản phẩm đã được chọn trước đó
+            if (!randomProducts.includes(randomProduct)) {
+                randomProducts.push(randomProduct);
+            }
+        }
 
+        return randomProducts;
+    }
+
+    // Hiển thị sản phẩm trên trang web
+    function displayProducts(products) {
+        var relatedProductsDiv = document.querySelector('.relatedProductsDv');
+
+        products.forEach(product => {
+            var productDiv = document.createElement('li');
+            productDiv.classList.add('relatedProduct');
+
+            var imgDiv = document.createElement('div');
+            imgDiv.classList.add('imgvp1');
+
+            var img = document.createElement('img');
+            img.src = product.img1;
+            img.alt = product.name;
+
+            imgDiv.appendChild(img);
+
+            
+    
+            var contentDiv = document.createElement('div');
+            contentDiv.classList.add('content');
+
+            var titleDiv = document.createElement('div');
+            titleDiv.classList.add('title');
+            titleDiv.textContent = product.name;
+
+            var desDiv = document.createElement('div');
+            desDiv.classList.add('des');
+            desDiv.innerHTML = `
+                <div>CPU: ${product.cpu}</div>
+                <div>RAM: ${product.ram}</div>
+                <div>SSD: ${product.ssd}</div>
+                <div>VGA: ${product.gpu}</div>
+            `;
+
+            var priceDiv = document.createElement('div');
+            priceDiv.classList.add('relatedProductPrice');
+            priceDiv.textContent = `Price: ${product.price}`;
+
+            contentDiv.appendChild(titleDiv);
+            contentDiv.appendChild(desDiv);
+            contentDiv.appendChild(priceDiv);
+
+            productDiv.appendChild(imgDiv);
+            productDiv.appendChild(contentDiv);
+            relatedProductsDiv.appendChild(productDiv);
+
+            productDiv.addEventListener('click', function() {
+                var productId = product.id;
+                var productURL = localStorage.getItem('productURL_' + productId);
+                if (productURL) {
+                    window.location.href = productURL;
+                } else {
+                    // Xử lý nếu không tìm thấy URL cho sản phẩm
+                    console.error('URL not found for product:', productId);
+                }
+            });
+        });
+    }
+
+    // Sử dụng hàm để lấy ngẫu nhiên 4 sản phẩm cùng hãng từ ArrayListProducts
+    var brand = ArrayListProducts[idx].hang; // Thay đổi thành hãng bạn muốn lấy
+    var randomProducts = getRandomProductsByBrand(ArrayListProducts, brand);
+
+    // Hiển thị các sản phẩm ngẫu nhiên cùng hãng trên trang web
+    displayProducts(randomProducts);
