@@ -613,17 +613,25 @@ function createProductList() {
     listItem.textContent = product.name;
     listItem.setAttribute('data-index', index);
 
+    // Tạo URL dựa trên productId và lưu vào localStorage
+    var productId = product.id;
+    var productURL = 'productInfomation.html?id=' + productId;
+    localStorage.setItem('productURL_' + productId, productURL);
+
     listItem.addEventListener('click', function(event) {
       var selectedIndex = parseInt(event.target.getAttribute('data-index'));
       localStorage.setItem('selectedProductIndex', selectedIndex);
-      window.location.href = 'productInfomation.html';
+
+      window.location.href = productURL; // Điều hướng đến trang sản phẩm
     });
 
     productList.appendChild(listItem);
   });
 }
 
+// Gọi hàm khi trang được load
 createProductList();
-  </script>
+
+</script>
 </body>
 </html>
