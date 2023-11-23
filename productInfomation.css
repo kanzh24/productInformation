@@ -464,16 +464,12 @@ textarea{
     font-weight: 600;
     margin-right: 10px;
 }
-.item .imgvp1{
+.imgvp1 img{
     width: 90%;
-    height: 250px;
-    background-image: url('anh1.jpg');
+    height: 180px;
     background-size: cover;
   }
-  .imgvp1:hover{
-    cursor: pointer;
-    background-image: url('anh2.jpg');
-  }
+ 
 .footer{
     margin-top: 50px;
     width: 100%;
