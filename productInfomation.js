@@ -156,7 +156,6 @@ addToCartButton.addEventListener('click', addToCart);
 
 //THAY DOI SAN PHAM
 
-var selectedProductIndex = localStorage.getItem('selectedProductIndex');
 var ArrayListProducts = [];
 
 
