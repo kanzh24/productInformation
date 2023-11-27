@@ -147,8 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Hàm xử lý khi người dùng ấn nút thêm vào giỏ hàng
-var addToCartButton = document.getElementById('addToCartButton');
-addToCartButton.addEventListener('click', addToCart);
 
 });
 
