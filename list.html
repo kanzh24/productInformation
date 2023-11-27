@@ -6,9 +6,9 @@
 </head>
 <body>
   <h1>List of Products</h1>
-  <ul id="productList">
+  <div id="list">
     <!-- Danh sách sản phẩm sẽ được tạo bằng JavaScript -->
-  </ul>
+  </div>
 
   <script>
   var ArrayListProducts = [
@@ -606,7 +606,7 @@
 localStorage.setItem('productsData', JSON.stringify(ArrayListProducts));
 
 function createProductList() {
-  var productList = document.getElementById('productList');
+  var productList = document.getElementById('list');
 
   ArrayListProducts.forEach(function(product, index) {
     var listItem = document.createElement('li');
