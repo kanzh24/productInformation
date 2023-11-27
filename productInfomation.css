@@ -74,23 +74,51 @@ table {
     border-spacing: 0;
  
 }
+
 .title-total {
     font-weight: 600;
     font-size: 16px;
+    text-align: center;
+   border: none;
+   padding: 20px;
+}
+.text-right{
+    border: none;
+    text-align: center  ;
+    border: none;
+
 }
 #total-view-cart {
     color: #ff0000;
     font-weight: 600;
     font-size: 18px;
 }
+
 .cart-content td    {
     color: black;
 }
-
+.td1{
+    border: none;
+}
+.tdMain{
+    border-color: aqua;`x
+}
+.checkoutBtn{
+   text-align: center;
+   padding: 20px;
+   
+   background-color: aqua;
+   color: whitesmoke;
+}
+.checkoutBtn:hover{
+    background-color:  whitesmoke;
+    color: aqua;
+}
 .breadcrumb{
     margin: 0;
     height: 70px;
 }
+
 
 .breadcrumb-arrow   {
     padding: 10px  ;
@@ -208,7 +236,7 @@ li{
 }
 .quantityProduct{
     width: 100%;
-    height: 50px;
+    height: 70px;
     margin-bottom: 30px;
 }
 .quantity-area{
@@ -266,20 +294,7 @@ li{
    width: 100%;
     border-radius: 5px;
 }
-.buyNow{
-    width: 100%;
-    height: 20%;
-  
 
-}
-.buyNowBtn{
-    border: none;
-    background-color: red;
-    padding: 20px;
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
 
 
 
@@ -591,6 +606,13 @@ textarea{
         width: 100%;
         height: 50px;
     }
-
+    .header-action_dropdown {
+        position: absolute;
+        top: 100%;
+        left: calc(50% + 100px);
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+    }
     
 }
